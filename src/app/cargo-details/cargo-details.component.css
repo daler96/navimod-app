@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+  }
+
+.infoCard{
+  width: 70%;
+  margin: 5%;
+}
+
+.content{
+  padding-left: 1%;
+}

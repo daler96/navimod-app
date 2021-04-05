@@ -5,7 +5,8 @@ import { cargoListFormat } from '../models/cargoListFormat';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class CargoListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private service: RequestService) { }
+  constructor(private service: RequestService, private router: Router) { }
 
 
 
@@ -31,11 +32,17 @@ export class CargoListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getAllCargos();
+
   }
 
   public getAllCargos() {
     let response = this.service.getCargos();
     response.subscribe(cargo => this.dataSource.data = cargo as cargoListFormat[]);
+  }
+
+  getRecord(row) {
+    let route = '/cargos/'
+    this.router.navigate([route, row.id]);
   }
 
 }

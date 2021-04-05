@@ -1,4 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+form.normal-form{
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.controls-container{
+    width: 60%;
+    padding: 5%;    
+}
+
+.controls-container > * {
+    width: 100%;
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  body {
+      margin:0;
+      padding:0;
+      background-color: #f6f6f8
+    }

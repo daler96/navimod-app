@@ -1,2 +1,297 @@
-<a routerLink="/cargos">Cargos</a>
-<p>cargo-form works!</p>
+<form [formGroup]="service.form" class='normal-form' (ngSubmit)="onSubmit()">
+
+    <mat-grid-list cols="2" rowHeight="3:1" class="inputPadding">
+
+
+        <mat-grid-tile>
+            <div class='internalMatGrid'>
+
+                <mat-grid-list cols="2" rowHeight="3:1" class="inputPadding">
+
+                    <mat-grid-tile>
+
+
+                        <div class="controls-container">
+
+                            <input type="hidden" formControlName="$key">
+                            <mat-form-field>
+
+                                <mat-select formControlName="mode" placeholder="Mode">
+                                    <ng-container *ngFor="let mode of modes">
+
+                                        <mat-option value="{{mode.value}}">{{mode.value}}</mat-option>
+
+
+                                    </ng-container>
+
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="controls-container">
+                            <div>Movement Type</div>
+                            <mat-form-field>
+                                <mat-select formControlName="movementType" placeholder="Movement Type">
+                                    <ng-container *ngFor="let movementType of movementTypes">
+
+                                        <mat-option value="{{movementType.value}}">{{movementType.value}}
+                                        </mat-option>
+
+
+                                    </ng-container>
+
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+            <div class='internalMatGrid'>
+                <mat-grid-list cols="2" rowHeight="3:1" class="inputPadding">
+                    <mat-grid-tile>
+                        <div class="controls-container">
+                            <mat-form-field>
+                                <mat-select formControlName="incoterm" placeholder="Incoterm">
+                                    <ng-container *ngFor="let incoterm of incoterms">
+
+                                        <mat-option value="{{incoterm.value}}">{{incoterm.value}}</mat-option>
+
+
+                                    </ng-container>
+
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="controls-container">
+
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+    <!-- ******************** First Row ends here ********************** -->
+
+    <mat-grid-list cols="2" rowHeight="3:1" class="inputPadding">
+
+        <mat-grid-tile>
+            <div class='internalMatGrid'>
+                <mat-grid-list cols="2" rowHeight="3:1" class="inputPadding">
+                    <mat-grid-tile>
+
+
+                        <div class="controls-container">
+                            <mat-form-field>
+                                <input type="text" formControlName="originCountry" placeholder="Origin Country" matInput
+                                    [matAutocomplete]="auto">
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+
+                                    <mat-option *ngFor="let country of countries" value="{{country.value}}">
+                                        {{country.value}}
+                                    </mat-option>
+
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="controls-container">
+                            <mat-form-field>
+                                <mat-select formControlName="originCity" placeholder="Origin City">
+                                    <ng-container *ngFor="let city of cities">
+
+                                        <mat-option value="{{city.value}}">{{city.value}}</mat-option>
+
+
+                                    </ng-container>
+
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div class='internalMatGrid'>
+                <mat-grid-list cols="3" rowHeight="2:1" class="inputPadding">
+                    <mat-grid-tile>
+                        <div class="controls-container">
+                            <mat-form-field>
+                                <input type="text" formControlName="destinationCountry"
+                                    placeholder="Destination Country" matInput [matAutocomplete]="auto">
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+
+                                    <mat-option *ngFor="let country of countries" value="{{country.value}}">
+                                        {{country.value}}
+                                    </mat-option>
+
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="controls-container">
+                            <mat-form-field>
+                                <mat-select formControlName="destinationCity" placeholder="Destination City">
+                                    <ng-container *ngFor="let city of cities">
+
+                                        <mat-option value="{{city.value}}">{{city.value}}</mat-option>
+
+
+                                    </ng-container>
+
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="controls-container">
+                            <mat-form-field>
+                                <mat-label>Zip Code</mat-label>
+                                <input type="number" matInput formControlName="zipCode" placeholder="Ex. 94105">
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+    <!-- ******************** Second Row ends here ********************** -->
+
+    <div class="internalMatGrid" style="margin-left: 2%;">
+        <mat-grid-list cols="7" rowHeight="2:1" class="inputPadding">
+
+
+            <mat-grid-tile>
+
+                <div class="controls-container">
+                    <mat-form-field>
+                        <mat-select formControlName="packageType" placeholder="Package Type">
+                            <ng-container *ngFor="let package of packages">
+
+                                <mat-option value="{{package}}">{{package}}</mat-option>
+
+
+                            </ng-container>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field>
+                        <input type="number" matInput formControlName="quantity" placeholder="Quantity">
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field>
+                        <input type="number" matInput formControlName="volume" placeholder="Volume">
+                    </mat-form-field>
+
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field>
+                        <mat-select formControlName="volumeUnit" placeholder="Unit">
+                            <ng-container *ngFor="let Vunit of Vunits">
+
+                                <mat-option value="{{Vunit}}">{{Vunit}}</mat-option>
+
+
+                            </ng-container>
+
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field>
+                        <input type="number" matInput formControlName="weight" placeholder="Weight">
+                    </mat-form-field>
+
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field>
+                        <mat-select formControlName="weightUnit" placeholder="Unit">
+                            <ng-container *ngFor="let Wunit of Wunits">
+
+                                <mat-option value="{{Wunit}}">{{Wunit}}</mat-option>
+
+
+                            </ng-container>
+
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field>
+                        <input type="text" matInput formControlName="cargoDescription" placeholder="Cargo Description">
+                    </mat-form-field>
+
+                </div>
+            </mat-grid-tile>
+
+
+        </mat-grid-list>
+
+    </div>
+
+    <div class="controls-container">
+        <table>
+            <tr>
+                <td>
+                    <mat-checkbox formControlName="hazardousMaterial">Hazardous Material</mat-checkbox>
+                </td>
+                <td>
+                    <mat-checkbox formControlName="eventCargo">Event Cargo</mat-checkbox>
+                </td>
+                <td>
+                    <mat-checkbox formControlName="personalGoods">Personal Goods</mat-checkbox>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-select formControlName="currency" placeholder="Currency">
+                            <ng-container *ngFor="let currency of currencies">
+
+                                <mat-option value="{{currency}}">{{currency}}</mat-option>
+
+
+                            </ng-container>
+
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <button mat-raised-button color="warn" type="submit"> Get Quote </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</form>

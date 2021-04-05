@@ -1,1 +1,107 @@
-<p>cargo-details works!</p>
+<mat-card class="infoCard">
+    <mat-card-header class="content">
+        <table>
+            <tr>
+                <td>
+                    <mat-card-title>Mode: {{cargoInfo.mode}}</mat-card-title>
+                    <mat-card-title>{{cargoInfo.movementType}}</mat-card-title>
+                    <mat-card-subtitle>Incoterm: <b>{{cargoInfo.incoterm}}</b></mat-card-subtitle>
+                </td>
+                <td>
+                    <mat-card-title>Origin: {{cargoInfo.originCountry}}, <b>{{cargoInfo.originCity}}</b>
+                    </mat-card-title>
+                    <mat-card-subtitle>.</mat-card-subtitle>
+
+                </td>
+                <td>
+                    <mat-card-title>Destination: {{cargoInfo.destinationCountry}}, <b>{{cargoInfo.destinationCity}}</b>
+                    </mat-card-title>
+                    <mat-card-subtitle>Zip Code: <b>{{cargoInfo.zipCode}}</b></mat-card-subtitle>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <mat-card-subtitle><b>Currency:</b></mat-card-subtitle>
+                    <mat-card-title>{{cargoInfo.currency}}</mat-card-title>
+
+                </td>
+                <td>
+                    <mat-card-subtitle><b>Package Type:</b></mat-card-subtitle>
+                    <mat-card-title>{{cargoInfo.packageType}}</mat-card-title>
+
+                </td>
+                <td>
+                    <mat-card-subtitle><b>Quantity:</b></mat-card-subtitle>
+                    <mat-card-title>{{cargoInfo.quantity}}</mat-card-title>
+
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <mat-card-subtitle><b>Volume:</b></mat-card-subtitle>
+                    <mat-card-title>{{cargoInfo.volume}} {{cargoInfo.volumeUnit}}³</mat-card-title>
+
+                </td>
+                <td>
+                    <mat-card-subtitle><b>Weight:</b></mat-card-subtitle>
+                    <mat-card-title>{{cargoInfo.weight}} {{cargoInfo.weightUnit}}</mat-card-title>
+
+                </td>
+                <td>
+                    <mat-card-subtitle><b>Description:</b></mat-card-subtitle>
+                    <mat-card-title>{{cargoInfo.description}}</mat-card-title>
+
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <div *ngIf="cargoInfo.hazardousMaterial; then thenBlock else elseBlock"></div>
+
+                    <ng-template #thenBlock>
+                        <mat-card-subtitle><b>Hazardous Material:</b></mat-card-subtitle>
+                        <mat-card-title>Yes</mat-card-title>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <mat-card-subtitle><b>Hazardous Material:</b></mat-card-subtitle>
+                        <mat-card-title>No</mat-card-title>
+                    </ng-template>
+
+                </td>
+                <td>
+                    <div *ngIf="cargoInfo.eventCargo; then thenEvent else elseEvent"></div>
+
+                    <ng-template #thenEvent>
+                        <mat-card-subtitle><b>Event Cargo:</b></mat-card-subtitle>
+                        <mat-card-title>Yes</mat-card-title>
+                    </ng-template>
+                    <ng-template #elseEvent>
+                        <mat-card-subtitle><b>Event Cargo:</b></mat-card-subtitle>
+                        <mat-card-title>No</mat-card-title>
+                    </ng-template>
+
+
+                </td>
+                <td>
+                    <div *ngIf="cargoInfo.personalGoods; then thenPersonal else elsePersonal"></div>
+
+                    <ng-template #thenPersonal>
+                        <mat-card-subtitle><b>Personal Goods:</b></mat-card-subtitle>
+                        <mat-card-title>Yes</mat-card-title>
+                    </ng-template>
+                    <ng-template #elsePersonal>
+                        <mat-card-subtitle><b>Personal Goods:</b></mat-card-subtitle>
+                        <mat-card-title>No</mat-card-title>
+                    </ng-template>
+
+
+                </td>
+            </tr>
+
+        </table>
+    </mat-card-header>
+
+</mat-card>

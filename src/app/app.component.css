@@ -1,0 +1,19 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  .toolBarButton{
+    margin-left: 1%;
+    padding: 1%;
+    
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+}
+
+.toolBarButton:hover {
+    background-color: #920000;
+    cursor: pointer;
+  }
